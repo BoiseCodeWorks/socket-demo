@@ -8,7 +8,7 @@
 				<button class="btn btn-primary btn-lg" type="submit" >Join Chat</button>
 			</form>
 		</div>
-		<div v-if="joined">
+		<div v-else>
 			<div class="connected-users text-left">
 				<h5>Connected Users</h5>
 				<ul>
@@ -45,6 +45,9 @@
 <script>
 	export default {
 		name: 'Chat',
+		mounted(){
+			this.$store.dispatch('socket')
+		},
 		data: function () {
 			return {
 				name: '',
@@ -64,13 +67,13 @@
 		},
 		methods: {
 			join: function () {
-
+				this.$store.dispatch('join', this.name)
 			},
 			leave: function () {
-
+				this.$store.dispatch('leaveRoom')
 			},
 			send: function () {
-
+				this.$store.dispatch('sendMessage', {user: this.name, message: this.message})
 			}
 		}
 	}
