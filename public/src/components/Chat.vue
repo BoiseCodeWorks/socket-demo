@@ -64,18 +64,13 @@
 		},
 		methods: {
 			join: function () {
-				if (this.name) {
-					this.$store.dispatch('setJoined', {name: this.name, joined:true});
-				}
+
 			},
 			leave: function () {
-				this.$store.dispatch('leaveRoom');
+
 			},
 			send: function () {
-				if (this.message) {
-					this.$store.dispatch('sendMessage', this.message);
-					this.message = '';
-				}
+
 			}
 		}
 	}
