@@ -50,6 +50,7 @@ export default new Vuex.Store({
 			//establish connection with socket
 			socket = io('//localhost:3000')
 
+			//register socket event listeners
 			socket.on('CONNECTED', data=>{
 				console.log('Connected to socket')
 				//connect to room 

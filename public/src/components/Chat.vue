@@ -3,7 +3,7 @@
 		<div v-if="!joined" class="text-center">
 			<form @submit.prevent="join">
 				<div class="form-group">
-					<input type="text" max="12" class="form-control input-lg text-center" placeholder="Name" v-model="name">
+					<input type="text" max="12" class="form-control input-lg text-center" placeholder="Name" v-model="name" required>
 				</div>
 				<button class="btn btn-primary btn-lg" type="submit" >Join Chat</button>
 			</form>
@@ -45,9 +45,6 @@
 <script>
 	export default {
 		name: 'Chat',
-		mounted(){
-			this.$store.dispatch('socket')
-		},
 		data: function () {
 			return {
 				name: '',
@@ -66,13 +63,13 @@
 			}
 		},
 		methods: {
-			join: function () {
+			join() {
 				this.$store.dispatch('join', this.name)
 			},
-			leave: function () {
+			leave() {
 				this.$store.dispatch('leaveRoom')
 			},
-			send: function () {
+			send() {
 				this.$store.dispatch('sendMessage', {user: this.name, message: this.message})
 			}
 		}
