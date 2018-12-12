@@ -5,7 +5,7 @@
 				<div class="form-group">
 					<input type="text" max="12" class="form-control input-lg text-center" placeholder="Name" v-model="name">
 				</div>
-				<button class="btn btn-primary btn-lg" type="submit" >Join Chat</button>
+				<button class="btn btn-primary btn-lg" type="submit">Join Chat</button>
 			</form>
 		</div>
 		<div v-else>
@@ -36,7 +36,7 @@
 				</form>
 			</div>
 			<div class="text-center">
-					<button class="btn btn-primary btn-lg" type="button" @click="leave">Leave Chat</button>
+				<button class="btn btn-primary btn-lg" type="button" @click="leave">Leave Chat</button>
 			</div>
 		</div>
 	</div>
@@ -45,9 +45,6 @@
 <script>
 	export default {
 		name: 'Chat',
-		mounted(){
-			this.$store.dispatch('socket')
-		},
 		data: function () {
 			return {
 				name: '',
@@ -61,7 +58,7 @@
 			messages() {
 				return this.$store.state.messages;
 			},
-			connectedUsers(){
+			connectedUsers() {
 				return this.$store.state.roomData.connectedUsers
 			}
 		},
@@ -73,7 +70,7 @@
 				this.$store.dispatch('leaveRoom')
 			},
 			send: function () {
-				this.$store.dispatch('sendMessage', {user: this.name, message: this.message})
+				this.$store.dispatch('sendMessage', { user: this.name, message: this.message })
 			}
 		}
 	}
