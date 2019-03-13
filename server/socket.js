@@ -18,19 +18,19 @@ class Socket {
       //join a room
       socket.on("join", data => {
         //insure connection passed name
-        if (data.name, data.room) {
+        if (data.name) {
           //attaches name to socket
           socket.user = data.name;
 
           //adds connection to room
-          socket.join(data.room);
+          socket.join('BCW');
 
           //adds user to connectedUsers
           connectedUsers[data.name] = data.name;
 
           //notify connection of room connection
           socket.emit("joinedRoom", {
-            roomName: data.room,
+            roomName: "BCW",
             connectedUsers: connectedUsers
           });
 
